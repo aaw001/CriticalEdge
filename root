@@ -1,0 +1,15 @@
+/ (root)
+ ├── index.html
+ ├── /css
+ │    └── style.css
+ ├── /js
+ │    └── script.js
+ ├── /assets
+ │    └── logo.png
+ ├── /articles
+ │    ├── patient-evaluation.html
+ │    ├── stroke.html
+ │    ├── pharmacology.html
+ │    ├── gunshot-wounds.html
+ │    ├── blast-injuries.html
+ │    └── ...
