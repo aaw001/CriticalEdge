@@ -1,0 +1,314 @@
+// CriticalEdge — React app with Free & Pro articles integrated into Library
+// Update: Added Stroke, Obesity (Free) + Pharmacology, Gunshot Wounds (Pro)
+
+import React, { useEffect, useMemo, useState } from "react";
+
+const brandGradient = "bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-sky-500";
+const brandText = "bg-clip-text text-transparent bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-sky-500";
+
+// ---------------------------
+// Content Library
+// ---------------------------
+const CONTENT = [
+  {
+    id: "c1",
+    title: "Stroke Recognition in the Field",
+    type: "lesson",
+    tier: "free",
+    duration: "6 min",
+    tags: ["Neuro", "Assessment"],
+    description:
+      "FAST signs, last-known-well, glucose check, and stroke-centre pre-alert.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <h3>Why It Matters</h3>
+        <p>Stroke is a time-critical emergency. Every minute ~2 million neurons are lost. Rapid field recognition saves lives and function.</p>
+        <h4>FAST Rule</h4>
+        <ul>
+          <li><strong>F</strong>ace droop</li>
+          <li><strong>A</strong>rm weakness</li>
+          <li><strong>S</strong>peech slurred</li>
+          <li><strong>T</strong>ime to call stroke code</li>
+        </ul>
+        <h4>Prehospital Actions</h4>
+        <ul>
+          <li>Rapid ABC stabilization</li>
+          <li>Check glucose (mimics!)</li>
+          <li>Confirm last-known-well</li>
+          <li>Pre-alert the stroke centre</li>
+        </ul>
+        <p className="mt-4"><em>Takeaway:</em> Paramedics are the first line of defense—recognize, move, pre-alert.</p>
+      </div>
+    ),
+  },
+  {
+    id: "c2",
+    title: "Airway Management in the Obese Patient",
+    type: "lesson",
+    tier: "free",
+    duration: "7 min",
+    tags: ["Airway", "Obesity"],
+    description:
+      "Positioning (ramped), backup plans, weight-based dosing, and oxygenation strategies.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <h3>The Challenge</h3>
+        <p>Obese patients increase difficulty for mask ventilation & intubation, reduce lung reserve, and risk collapse with sedation.</p>
+        <h4>Clinical Tips</h4>
+        <ul>
+          <li><strong>Position:</strong> Ramped (ear to sternal notch).</li>
+          <li><strong>Plan:</strong> Have a backup airway strategy ready.</li>
+          <li><strong>Drugs:</strong> Induction by lean body weight, NMB by total body weight.</li>
+          <li><strong>Oxygenation:</strong> Consider awake techniques; be ready for higher pressures.</li>
+        </ul>
+        <p className="mt-4"><em>Takeaway:</em> Planning, positioning, preparation.</p>
+      </div>
+    ),
+  },
+  {
+    id: "c3",
+    title: "Pharmacology in EMS — Getting It Right",
+    type: "lesson",
+    tier: "pro",
+    duration: "9 min",
+    tags: ["Pharmacology", "Logistics"],
+    description:
+      "Drug selection for the field: stability, impact, and real-world constraints.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <h3>Why EMS Meds Are Different</h3>
+        <ul>
+          <li>Logistics: heat/cold, vibration, long storage.</li>
+          <li>Bridge-to-definitive-care time pressures.</li>
+          <li>Every drug must earn its place in the pack.</li>
+        </ul>
+        <h4>Selection Criteria</h4>
+        <ul>
+          <li>Population & incident patterns</li>
+          <li>Prehospital outcome evidence</li>
+          <li>Stability & usability in an ambulance</li>
+        </ul>
+        <p className="mt-4"><strong>Subscriber Bonus:</strong> EMS Drug Pack Essentials (PDF).</p>
+      </div>
+    ),
+  },
+  {
+    id: "c4",
+    title: "Gunshot Wounds — Ballistics Every Medic Should Know",
+    type: "lesson",
+    tier: "pro",
+    duration: "10 min",
+    tags: ["Trauma", "Ballistics"],
+    description:
+      "Velocity, yaw, deformation, and temporary cavity—clinical implications.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <h3>Key Concepts</h3>
+        <ul>
+          <li>Low vs high velocity (rifles vs handguns)</li>
+          <li>Yaw & tumbling → more tissue damage</li>
+          <li>Deformation/expansion (e.g., hollow points)</li>
+          <li>Temporary cavity → occult internal injury</li>
+        </ul>
+        <h4>Clinical Relevance</h4>
+        <ul>
+          <li>Small entry ≠ small injury</li>
+          <li>Actively hunt for bleeding</li>
+          <li>High suspicion with thoraco‑abdominal hits</li>
+        </ul>
+        <p className="mt-4"><strong>Subscriber Bonus:</strong> Gunshot Trauma Algorithm (PDF).</p>
+      </div>
+    ),
+  },
+  {
+    id: "c5",
+    title: "Quick Pearls: IO vs. IV in Resus",
+    type: "lesson",
+    tier: "free",
+    duration: "3 min",
+    tags: ["Access", "Resuscitation"],
+    description:
+      "After two failed IV attempts in resus, move early to IO.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <ul>
+          <li>Two failed IVs during resus → go IO to save time.</li>
+          <li>Choose site by scenario (proximal tibia vs humerus).</li>
+          <li>Secure, flush, pressure bag for reliable flow.</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    id: "c6",
+    title: "Thesis Tip: Build a Literature Matrix",
+    type: "lesson",
+    tier: "free",
+    duration: "4 min",
+    tags: ["Thesis", "Productivity"],
+    description:
+      "Author/Year/Method/Findings/Notes table to tame 30+ sources.",
+    body: (
+      <div className="prose prose-slate max-w-none">
+        <p>Create columns for Author, Year, Method, Findings, and Notes. Summarize in one line each to keep synthesis fast.</p>
+      </div>
+    ),
+  },
+];
+
+const DEFAULT_USER = { isSignedIn: false, plan: "free" };
+
+function loadUser() {
+  try {
+    return JSON.parse(localStorage.getItem("ce_user") || "null") || DEFAULT_USER;
+  } catch {
+    return DEFAULT_USER;
+  }
+}
+function saveUser(u) { localStorage.setItem("ce_user", JSON.stringify(u)); }
+
+function loadPurchases() {
+  try { return JSON.parse(localStorage.getItem("ce_purchases") || "[]"); } catch { return []; }
+}
+function savePurchases(ids) { localStorage.setItem("ce_purchases", JSON.stringify(ids)); }
+
+function isAccessible(item, user, purchases) {
+  if (item.tier === "free") return true;
+  if (item.tier === "pro") return user?.plan === "pro";
+  if (item.tier === "purchase") return purchases.includes(item.id) || user?.plan === "pro";
+  return false;
+}
+
+// ---------------------------
+// UI Components (trimmed for brevity)
+// ---------------------------
+function Logo() {
+  return (
+    <div className="flex items-center gap-3">
+      <div className={`${brandGradient} rounded-2xl shadow-lg relative`} style={{ width: 40, height: 40 }}>
+        <svg viewBox="0 0 100 100" className="absolute inset-0">
+          <polyline
+            points="10,60 25,60 30,40 35,75 45,25 55,75 65,40 70,60 90,60"
+            stroke="white"
+            strokeWidth="8"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+      <span className="text-xl font-bold tracking-tight text-slate-900">CriticalEdge</span>
+    </div>
+  );
+}
+
+function Card({ item, user, purchases, onClick }) {
+  const accessible = isAccessible(item, user, purchases);
+  const tierLabel = item.tier === "free" ? "Free" : item.tier === "pro" ? "Pro" : `Course $${item.price}`;
+  return (
+    <div onClick={onClick} className="cursor-pointer group rounded-2xl border border-slate-200 overflow-hidden bg-white hover:shadow-xl transition">
+      <div className={`aspect-video ${brandGradient} relative`}>
+        {!accessible && (
+          <div className="absolute inset-0 bg-black/30 grid place-items-center">
+            <div className="backdrop-blur-sm bg-white/80 px-3 py-1 rounded-full text-sm font-semibold">{tierLabel}</div>
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <div className="font-semibold text-slate-900 line-clamp-2">{item.title}</div>
+        <div className="mt-2 flex flex-wrap gap-1">
+          {item.tags.map((t) => (
+            <span key={t} className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">{t}</span>
+          ))}
+        </div>
+        <div className="mt-3 text-xs text-slate-500">{item.description}</div>
+      </div>
+    </div>
+  );
+}
+
+function PlayerModal({ item, onClose, user, onUpgrade, purchases, onBuy }) {
+  if (!item) return null;
+  const accessible = isAccessible(item, user, purchases);
+  return (
+    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-3xl max-w-3xl w-full overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        <div className="aspect-video relative">
+          <div className={`${brandGradient} w-full h-full`} />
+          {!accessible && (
+            <div className="absolute inset-0 grid place-items-center bg-black/40">
+              <div className="bg-white/90 rounded-2xl p-6 text-center max-w-md">
+                <div className="text-xl font-bold text-slate-900 mb-2">Unlock this content</div>
+                <p className="text-slate-600 text-sm mb-4">
+                  {item.tier === "pro"
+                    ? "This is Pro content. Upgrade to Pro for full access."
+                    : `This is a one‑time purchase course ($${item.price}). Pro subscribers also get access.`}
+                </p>
+                {item.tier === "pro" ? (
+                  <Button onClick={onUpgrade}>Upgrade to Pro</Button>
+                ) : (
+                  <div className="flex gap-2 justify-center">
+                    <Button onClick={onUpgrade}>Get Pro</Button>
+                    <Button variant="secondary" onClick={() => onBuy(item)}>Buy course</Button>
+                  </div>
+                )}
+                <div className="mt-3">
+                  <button className="text-slate-600 text-sm underline" onClick={onClose}>Maybe later</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="p-5">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+            <div className="text-xs text-slate-500">{item.duration}</div>
+          </div>
+          <p className="text-slate-600 mt-2">{item.description}</p>
+          {accessible && (
+            <div className="mt-6 text-sm">
+              {item.body}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------
+// Main App
+// ---------------------------
+export default function App() {
+  const [user, setUser] = useState(DEFAULT_USER);
+  const [purchases, setPurchases] = useState([]);
+  const [openItem, setOpenItem] = useState(null);
+
+  useEffect(() => {
+    setUser(loadUser());
+    setPurchases(loadPurchases());
+  }, []);
+
+  const handleSignIn = () => { const u = { isSignedIn: true, plan: "free" }; setUser(u); saveUser(u); };
+  const handleUpgrade = () => { const u = { ...user, plan: "pro" }; setUser(u); saveUser(u); alert("Upgraded to Pro (demo)"); };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-800">
+      <header className="p-4 border-b flex justify-between items-center">
+        <Logo />
+        <div>
+          {!user.isSignedIn ? <button onClick={handleSignIn}>Sign in</button> : <span>Plan: {user.plan}</span>}
+          {user.plan === "free" && <button onClick={handleUpgrade}>Upgrade</button>}
+        </div>
+      </header>
+
+      <main className="p-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {CONTENT.map((c) => (
+          <Card key={c.id} item={c} user={user} purchases={purchases} onClick={() => setOpenItem(c)} />
+        ))}
+      </main>
+
+      <PlayerModal item={openItem} onClose={() => setOpenItem(null)} user={user} purchases={purchases} onUpgrade={handleUpgrade} />
+    </div>
+  );
+}
