@@ -2,82 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CriticalEdge — Paramedicine Learning</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CriticalEdge — Paramedicine Talks</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
 </head>
-<script src="js/script.js"></script>
-</body>
-</html>
 <body>
-  <nav class="nav">
-    <div class="container row">
-      <a class="logo" href="index.html">
-  <div class="logo-badge"><img src="assets/logo.svg" alt="CriticalEdge logo" style="width:90%;height:90%"></div>
-  <div class="brand">CriticalEdge</div>
-</a>
-      <div style="display:flex;gap:10px;align-items:center">
-        <a class="btn ghost" href="#library">Library</a>
-        <a class="btn" href="#pricing">Pricing</a>
-        <a class="btn primary" href="#cta">Subscribe</a>
-      </div>
-    </div>
-  </nav>
 
-  <header class="hero section">
-    <div class="container">
-      <h1 class="h1">Sharpen your skills. <span class="grad">Save lives.</span> Succeed.</h1>
-      <p class="lead">Micro‑lessons, deep‑dive cases, and streaks — built for paramedics and postgrads.</p>
-      <div style="display:flex;gap:10px;margin-top:16px">
-        <a class="btn primary" href="#pricing">Start free</a>
-        <a class="btn" href="#library">Browse library</a>
-      </div>
+  <header class="nav">
+    <div class="wrap nav-row">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span class="brand-text">CRITICALEDGE</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#talks">Talks</a>
+        <a href="articles/index.html">All talks</a>
+        <a href="#pricing">Plans</a>
+        <a class="btn btn-accent" href="#subscribe">Subscribe</a>
+      </nav>
     </div>
   </header>
 
-  <div class="library">
-  <a class="card" href="articles/stroke.html">
-    <div class="thumb"><div class="badge">Free</div></div>
-    <div class="pad"><strong>Stroke Recognition</strong><div class="muted">FAST, glucose, last-known-well.</div></div>
-  </a>
-  <a class="card" href="articles/pharm.html">
-    <div class="thumb"><div class="badge" style="background:#0ea5e9cc">Pro</div></div>
-    <div class="pad"><strong>Pharmacology in EMS</strong><div class="muted">Selection, stability, impact.</div></div>
-  </a>
-  <a class="card" href="articles/gsw-ballistics.html" style="display:block">
-    <div class="thumb"><div class="badge" style="background:#22c55ecc">Course $49</div></div>
-    <div class="pad"><strong>Balistics</strong><div class="muted">Gunshot, pitfalls.</div></div>
-  </a>
-</div>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="display">Ideas worth <span class="accent-grad">saving lives</span> for.</h1>
+        <p class="lead">Concise, credible, field‑tested micro‑talks for paramedics, critical care, and postgraduate learners.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-accent" href="#talks">Watch talks</a>
+          <a class="btn btn-ghost" href="#pricing">See plans</a>
+        </div>
+      </div>
+      <a class="hero-video" href="articles/case-of-the-month.html">
+        <div class="thumb hero-thumb"><div class="play">▶</div></div>
+        <div class="hero-meta">
+          <div class="eyebrow">Case of the Month</div>
+          <h3>Beyond Protocol: Human Judgement in Trauma</h3>
+          <p>Reframing excellence: not just algorithms, but contextual intelligence.</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-  <section id="pricing" class="section">
-    <div class="container">
-      <h2>Pricing</h2>
-      <div class="pricing">
-        <div class="card pad"><div class="big">Free</div><div class="price">$0</div><ul><li>Selected cases</li><li>Weekly micro‑lesson</li></ul></div>
-        <div class="card pad highlight"><div class="big">Pro</div><div class="price">$15/mo</div><ul><li>All Pro content</li><li>Downloads</li><li>Live debrief</li></ul></div>
-        <div class="card pad"><div class="big">Team</div><div class="price">Contact</div><ul><li>Seats for crews</li><li>Progress</li></ul></div>
+  <section id="talks" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Latest talks</h2>
+        <a class="link-more" href="articles/index.html">See all</a>
+      </div>
+
+      <div class="grid talks">
+        <a class="card" href="articles/stroke-recognition.html">
+          <div class="thumb"><span class="badge">Free</span></div>
+          <h3>Stroke Recognition in the Field</h3>
+          <p class="muted">FAST, glucose, last‑known‑well, pre‑alert.</p>
+        </a>
+
+        <a class="card" href="articles/airway-obesity.html">
+          <div class="thumb"><span class="badge">Free</span></div>
+          <h3>Airway in the Obese Patient</h3>
+          <p class="muted">Ramped position, dosing scalars, oxygenation strategies.</p>
+        </a>
+
+        <a class="card" href="articles/pharm-ems-selection.html">
+          <div class="thumb"><span class="badge badge-pro">Pro</span></div>
+          <h3>Pharmacology in EMS — Getting It Right</h3>
+          <p class="muted">Selection, stability, impact; drug‑pack checklist.</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="cta" class="section">
-    <div class="container card pad row" style="justify-content:space-between">
-      <div>
-        <div class="big">Ready to join CriticalEdge?</div>
-        <div class="muted">Subscribe now and get instant access to Pro cases & courses.</div>
+  <section id="pricing" class="section section-gray">
+    <div class="wrap">
+      <div class="section-head"><h2>Plans</h2></div>
+      <div class="grid pricing">
+        <div class="price-card">
+          <div class="pc-head"><div class="pc-name">Free</div><div class="pc-price">$0</div></div>
+          <ul><li>Selected talks</li><li>Weekly micro‑lesson</li></ul>
+          <a class="btn btn-light" href="#subscribe">Start free</a>
+        </div>
+        <div class="price-card highlight">
+          <div class="pc-head"><div class="pc-name">Pro</div><div class="pc-price">$15<span class="per">/mo</span></div></div>
+          <ul><li>All Pro talks</li><li>Mini‑courses included</li><li>Downloads & checklists</li><li>Monthly live debrief</li></ul>
+          <a class="btn btn-accent" href="#subscribe">Upgrade to Pro</a>
+        </div>
+        <div class="price-card">
+          <div class="pc-head"><div class="pc-name">Team</div><div class="pc-price">Contact</div></div>
+          <ul><li>Seats for crews/classes</li><li>Progress reporting</li><li>Private live sessions</li></ul>
+          <a class="btn btn-light" href="#subscribe">Contact sales</a>
+        </div>
       </div>
-      <a class="btn primary" href="#pricing">Subscribe</a>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="container row" style="justify-content:space-between">
-  <div class="logo-badge"><img src="assets/logo.svg" alt="CriticalEdge logo" style="width:90%;height:90%"></div>
-      <div style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>
+    <div class="wrap foot-row">
+      <div class="foot-brand"><span class="foot-badge" aria-hidden="true"></span><span>CRITICALEDGE</span></div>
+      <nav class="foot-nav"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></nav>
     </div>
+    <div class="wrap foot-copy">© <span id="yr"></span> CriticalEdge. Ideas worth saving lives for.</div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
