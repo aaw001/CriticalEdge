@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIHSS — Interactive Module | CriticalEdge</title>
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/nihss.css">
+</head><body>
+<header class="header-simple">
+  <div class="wrap nav-row">
+    <a class="brand" href="../index.html"><span class="brand-badge"></span><span class="brand-text">CRITICALEDGE</span></a>
+    <div><span class="chip">Module</span></div>
+  </div>
+</header>
+
+<div class="nihss-sticky">
+  <div class="wrap nihss-sticky-row">
+    <div class="nihss-sticky-left"><strong>NIHSS</strong> <span class="muted">Interactive practice</span></div>
+    <div class="nihss-sticky-right">
+      <span class="nihss-progress"><span id="nihssDone">0</span>/15 completed</span>
+      <span class="nihss-total">Total: <strong id="nihssTotal">0</strong></span>
+      <button class="btn btn-light" id="nihssReset">Reset</button>
+      <button class="btn btn-accent" id="nihssCopy">Copy result</button>
+    </div>
+  </div>
+</div>
+
+<main class="article">
+  <p class="meta">Educational tool • Not for clinical decision-making</p>
+  <h1>NIH Stroke Scale (NIHSS) — Interactive Module</h1>
+  <blockquote>Practice the NIHSS. Each item updates the running total instantly. Use this to learn structure, sequence, and common scoring pitfalls.</blockquote>
+
+  <details class="nihss-note"><summary>About this module</summary>
+    <p>This practice tool follows the NIHSS structure with typical scoring ranges. It does not replace training, protocols, or clinical judgement. Some items include an <em>UT</em> (Untestable) option for practice scenarios. For education only.</p>
+  </details>
+
+  <section class="nihss-grid">
+    <!-- 1a -->
+    <fieldset class="nihss-q" data-key="1a"><legend><span>1a.</span> Level of Consciousness</legend>
+      <div class="opts">
+        <label><input type="radio" name="q1a" value="0">0 Alert</label>
+        <label><input type="radio" name="q1a" value="1">1 Not alert but arousable</label>
+        <label><input type="radio" name="q1a" value="2">2 Requires repeated stimulation</label>
+        <label><input type="radio" name="q1a" value="3">3 Reflex only</label>
+      </div>
+    </fieldset>
+
+    <!-- 1b -->
+    <fieldset class="nihss-q" data-key="1b"><legend><span>1b.</span> LOC Questions</legend>
+      <div class="opts">
+        <label><input type="radio" name="q1b" value="0">0 Both correct</label>
+        <label><input type="radio" name="q1b" value="1">1 One correct</label>
+        <label><input type="radio" name="q1b" value="2">2 None</label>
+      </div>
+    </fieldset>
+
+    <!-- 1c -->
+    <fieldset class="nihss-q" data-key="1c"><legend><span>1c.</span> LOC Commands</legend>
+      <div class="opts">
+        <label><input type="radio" name="q1c" value="0">0 Both tasks</label>
+        <label><input type="radio" name="q1c" value="1">1 One task</label>
+        <label><input type="radio" name="q1c" value="2">2 No task</label>
+        <label class="muted"><input type="radio" name="q1c" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <!-- 2-11 (same pattern as above)… -->
+    <fieldset class="nihss-q" data-key="2"><legend><span>2.</span> Best Gaze</legend>
+      <div class="opts">
+        <label><input type="radio" name="q2" value="0">0 Normal</label>
+        <label><input type="radio" name="q2" value="1">1 Partial palsy</label>
+        <label><input type="radio" name="q2" value="2">2 Forced deviation</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="3"><legend><span>3.</span> Visual Fields</legend>
+      <div class="opts">
+        <label><input type="radio" name="q3" value="0">0 None</label>
+        <label><input type="radio" name="q3" value="1">1 Partial</label>
+        <label><input type="radio" name="q3" value="2">2 Complete</label>
+        <label><input type="radio" name="q3" value="3">3 Bilateral</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="4"><legend><span>4.</span> Facial Palsy</legend>
+      <div class="opts">
+        <label><input type="radio" name="q4" value="0">0 Normal</label>
+        <label><input type="radio" name="q4" value="1">1 Minor</label>
+        <label><input type="radio" name="q4" value="2">2 Partial</label>
+        <label><input type="radio" name="q4" value="3">3 Complete</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="5a"><legend><span>5a.</span> Motor Arm — Left</legend>
+      <div class="opts">
+        <label><input type="radio" name="q5a" value="0">0 No drift</label>
+        <label><input type="radio" name="q5a" value="1">1 Drift</label>
+        <label><input type="radio" name="q5a" value="2">2 Some effort</label>
+        <label><input type="radio" name="q5a" value="3">3 No effort</label>
+        <label><input type="radio" name="q5a" value="4">4 No movement</label>
+        <label class="muted"><input type="radio" name="q5a" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="5b"><legend><span>5b.</span> Motor Arm — Right</legend>
+      <div class="opts">
+        <label><input type="radio" name="q5b" value="0">0 No drift</label>
+        <label><input type="radio" name="q5b" value="1">1 Drift</label>
+        <label><input type="radio" name="q5b" value="2">2 Some effort</label>
+        <label><input type="radio" name="q5b" value="3">3 No effort</label>
+        <label><input type="radio" name="q5b" value="4">4 No movement</label>
+        <label class="muted"><input type="radio" name="q5b" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="6a"><legend><span>6a.</span> Motor Leg — Left</legend>
+      <div class="opts">
+        <label><input type="radio" name="q6a" value="0">0 No drift</label>
+        <label><input type="radio" name="q6a" value="1">1 Drift</label>
+        <label><input type="radio" name="q6a" value="2">2 Some effort</label>
+        <label><input type="radio" name="q6a" value="3">3 No effort</label>
+        <label><input type="radio" name="q6a" value="4">4 No movement</label>
+        <label class="muted"><input type="radio" name="q6a" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="6b"><legend><span>6b.</span> Motor Leg — Right</legend>
+      <div class="opts">
+        <label><input type="radio" name="q6b" value="0">0 No drift</label>
+        <label><input type="radio" name="q6b" value="1">1 Drift</label>
+        <label><input type="radio" name="q6b" value="2">2 Some effort</label>
+        <label><input type="radio" name="q6b" value="3">3 No effort</label>
+        <label><input type="radio" name="q6b" value="4">4 No movement</label>
+        <label class="muted"><input type="radio" name="q6b" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="7"><legend><span>7.</span> Limb Ataxia</legend>
+      <div class="opts">
+        <label><input type="radio" name="q7" value="0">0 Absent</label>
+        <label><input type="radio" name="q7" value="1">1 One limb</label>
+        <label><input type="radio" name="q7" value="2">2 Two limbs</label>
+        <label class="muted"><input type="radio" name="q7" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="8"><legend><span>8.</span> Sensory</legend>
+      <div class="opts">
+        <label><input type="radio" name="q8" value="0">0 Normal</label>
+        <label><input type="radio" name="q8" value="1">1 Mild‑moderate</label>
+        <label><input type="radio" name="q8" value="2">2 Severe/total</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="9"><legend><span>9.</span> Best Language</legend>
+      <div class="opts">
+        <label><input type="radio" name="q9" value="0">0 No aphasia</label>
+        <label><input type="radio" name="q9" value="1">1 Mild‑moderate</label>
+        <label><input type="radio" name="q9" value="2">2 Severe</label>
+        <label><input type="radio" name="q9" value="3">3 Global</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="10"><legend><span>10.</span> Dysarthria</legend>
+      <div class="opts">
+        <label><input type="radio" name="q10" value="0">0 Normal</label>
+        <label><input type="radio" name="q10" value="1">1 Mild‑moderate</label>
+        <label><input type="radio" name="q10" value="2">2 Severe</label>
+        <label class="muted"><input type="radio" name="q10" value="" data-ut>UT</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="nihss-q" data-key="11"><legend><span>11.</span> Extinction & Inattention</legend>
+      <div class="opts">
+        <label><input type="radio" name="q11" value="0">0 None</label>
+        <label><input type="radio" name="q11" value="1">1 Mild</label>
+        <label><input type="radio" name="q11" value="2">2 Severe</label>
+      </div>
+    </fieldset>
+  </section>
+
+  <hr class="nihss-hr"/>
+  <section class="nihss-actions">
+    <button class="btn btn-light" id="nihssReset2">Reset</button>
+    <button class="btn btn-accent" id="nihssCopy2">Copy result</button>
+    <a class="btn" href="../articles/index.html">← Back to all talks</a>
+  </section>
+
+  <p class="nihss-disclaimer muted">Educational practice tool. Always use official NIHSS materials and local policy for patient care.</p>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-row">
+    <div class="foot-brand"><span class="foot-badge"></span><span>CRITICALEDGE</span></div>
+    <nav class="foot-nav"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></nav>
+  </div>
+  <div class="wrap foot-copy">© <span id="yr"></span> CriticalEdge.</div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/nihss.js"></script>
+</body></html>
