@@ -1,30 +1,319 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stroke Recognition — CriticalEdge</title>
-<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
-<link rel="stylesheet" href="../css/style.css">
-</head><body>
-<header class="header-simple">
-  <div class="wrap nav-row">
-    <a class="brand" href="../index.html"><span class="brand-badge"></span><span class="brand-text">CRITICALEDGE</span></a>
-    <div><span class="chip">Free</span></div>
-  </div>
-</header>
-<main class="article">
-  <p class="meta">Category: Talks • Tier: Free</p>
-  <h1>Stroke Recognition in the Field</h1>
-  <blockquote>FAST exam, check glucose, confirm last‑known‑well, and pre‑alert a stroke centre.</blockquote>
-  <h2>Why this matters</h2>
-  <p>Time is brain; field recognition unlocks thrombolysis/thrombectomy pathways.</p>
-  <h2>Assessment: FAST</h2>
-  <ul><li>Face</li><li>Arm</li><li>Speech</li><li>Time (LKW)</li></ul>
-  <h2>Prehospital actions</h2>
-  <ul><li>ABCs, oxygen only if hypoxic</li><li>Check/correct glucose</li><li>Pre‑alert and transport fast</li></ul>
-  <p style="margin-top:28px"><a class="btn" href="../articles/index.html">← Back to all talks</a></p>
-</main>
-<footer class="footer">
-  <div class="wrap foot-row"><div class="foot-brand"><span class="foot-badge"></span><span>CRITICALEDGE</span></div><nav class="foot-nav"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></nav></div>
-  <div class="wrap foot-copy">© <span id="yr"></span> CriticalEdge.</div>
-</footer>
-<script src="../js/script.js"></script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critical Edge – Prehospital Stroke & NIHSS</title>
+  <style>
+    :root {
+      --bg: #0a192f;
+      --surface: #112240;
+      --accent: #64ffda;
+      --accent2: #4da8da;
+      --text: #e6f1ff;
+      --muted: #8892b0;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 2rem;
+      background: linear-gradient(90deg, var(--surface), var(--bg));
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: var(--accent);
+      border-bottom: 1px solid var(--accent2);
+      padding-bottom: .5rem;
+    }
+    .callout {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .flowchart {
+      background: var(--surface);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .flow-step {
+      margin: 1rem 0;
+      padding: .75rem 1rem;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .side-note {
+      font-size: .9rem;
+      color: var(--muted);
+      border-left: 3px solid var(--accent2);
+      margin: 1rem 0;
+      padding-left: .75rem;
+    }
+    details {
+      background: var(--surface);
+      border: 1px solid var(--accent2);
+      border-radius: 6px;
+      margin: 1rem 0;
+      padding: 1rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    details[open] {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prehospital Stroke & NIHSS</h1>
+  </header>
+
+  <section>
+    <h2>Why It Matters</h2>
+    <p>Every minute counts in stroke. Neurons die rapidly, and delays translate into permanent disability. The prehospital team’s role is recognition, rapid triage, and preparation for reperfusion therapy.</p>
+
+    <div class="callout">
+      <strong>Time Goal:</strong> Transport should begin within <strong>25 minutes</strong> of first medical contact.
+    </div>
+
+    <h2>Primary Actions</h2>
+    <ul>
+      <li>Primary and secondary survey</li>
+      <li>Identify symptom onset or last-known-normal</li>
+      <li>Vital signs: SpO₂, RR, HR, BP, glucose, temperature</li>
+      <li>O₂ if SpO₂ <90% (target 94–96%, or 88–92% if COPD)</li>
+      <li>Check for anticoagulation and bleeding risks</li>
+      <li>Evaluate with <strong>NIHSS/eStroke</strong></li>
+      <li>Connect multi-monitor and begin live transmission</li>
+    </ul>
+
+    <div class="flowchart">
+      <div class="flow-step">FAST-VAN exam → Suspected stroke?</div>
+      <div class="flow-step">Establish onset time (or wake-up stroke)</div>
+      <div class="flow-step">Check contraindications (bleed risk, anticoagulation)</div>
+      <div class="flow-step">Decide pathway: Thrombolysis <4.5h | EVT up to 24h</div>
+      <div class="flow-step">Transport to nearest stroke/EVT center</div>
+    </div>
+
+    <h2>Supportive Measures</h2>
+    <ul>
+      <li>Elevate head 30°</li>
+      <li>Insert 2 IV lines if possible (18G preferred)</li>
+      <li>Slow infusion: Ringer’s acetate or NaCl 0.9%</li>
+      <li>Treat fever (>37.5 °C → Paracetamol)</li>
+      <li>Treat hyperglycemia >10 mmol/L</li>
+      <li>Control SBP if >220 mmHg</li>
+      <li>Stop seizures: Midazolam 5 mg</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Remember:</strong> Stroke ≠ only clot. About 15% are hemorrhages—CT imaging is required before treatment.
+    </div>
+
+    <h2>Recognition Tools</h2>
+    <p>Use the mnemonic <strong>PSL</strong> (Prate, Smile, Løfte) — an updated, culturally adapted version of FAST:</p>
+    <ul>
+      <li><strong>P – Prate:</strong> Dysarthria, language disturbance</li>
+      <li><strong>S – Smile:</strong> Facial asymmetry</li>
+      <li><strong>L – Løfte:</strong> Arm/leg weakness</li>
+    </ul>
+
+    <div class="side-note">
+      TIAs may fully resolve but indicate high stroke risk — they must be evaluated in a stroke center.
+    </div>
+
+    <h2>NIHSS Collapsible Reference</h2>
+    <details>
+      <summary>Level of Consciousness</summary>
+      <p>0 = Alert, 1 = Not alert but arousable, 2 = Requires repeated stimulation, 3 = Unresponsive.</p>
+    </details>
+    <details>
+      <summary>Best Gaze</summary>
+      <p>0 = Normal, 1 = Partial gaze palsy, 2 = Forced deviation.</p>
+    </details>
+    <details>
+      <summary>Visual Fields</summary>
+      <p>0 = Normal, 1 = Partial hemianopia, 2 = Complete hemianopia, 3 = Bilateral hemianopia.</p>
+    </details>
+    <details>
+      <summary>Facial Palsy</summary>
+      <p>0 = Normal, 1 = Minor, 2 = Partial, 3 = Complete paralysis.</p>
+    </details>
+    <details>
+      <summary>Motor Arm (each side)</summary>
+      <p>0 = No drift, 1 = Drift, 2 = Some effort against gravity, 3 = No effort against gravity, 4 = No movement.</p>
+    </details>
+    <details>
+      <summary>Motor Leg (each side)</summary>
+      <p>0 = No drift, 1 = Drift, 2 = Some effort against gravity, 3 = No effort against gravity, 4 = No movement.</p>
+    </details>
+    <details>
+      <summary>Limb Ataxia</summary>
+      <p>0 = Absent, 1 = Present in one limb, 2 = Present in two limbs.</p>
+    </details>
+    <details>
+      <summary>Sensory</summary>
+      <p>0 = Normal, 1 = Mild-to-moderate loss, 2 = Severe-to-total loss.</p>
+    </details>
+    <details>
+      <summary>Language (Aphasia)</summary>
+      <p>0 = Normal, 1 = Mild-to-moderate aphasia, 2 = Severe aphasia, 3 = Mute/global aphasia.</p>
+    </details>
+    <details>
+      <summary>Dysarthria</summary>
+      <p>0 = Normal, 1 = Mild-to-moderate slurring, 2 = Severe.</p>
+    </details>
+    <details>
+      <summary>Extinction & Inattention</summary>
+      <p>0 = None, 1 = Neglect in one modality, 2 = Profound neglect in >1 modality.</p>
+    </details>
+    <h2>NIHSS Scoring (Collapsible)</h2>
+    <p class="side-note">Open the items you need. Keep it quick—document a total score and key deficits for your prealert.</p>
+    <div class="callout" aria-label="NIHSS tips"><strong>Tips:</strong> Follow the sequence, avoid coaching, and score the first effort. If abnormal from non‑stroke cause (e.g., trauma), score what you see and note the confounder.</div>
+
+    <details>
+      <summary><strong>1. Level of Consciousness (LOC)</strong> — 0–3</summary>
+      <ul>
+        <li><strong>0</strong> Alert</li>
+        <li><strong>1</strong> Not alert; arousable by minor stimulation</li>
+        <li><strong>2</strong> Requires repeated/painful stimulation</li>
+        <li><strong>3</strong> Unresponsive</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>1a. LOC Questions</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Both correct (month + age)</li>
+        <li><strong>1</strong> One correct</li>
+        <li><strong>2</strong> Neither correct</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>1b. LOC Commands</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Performs both (open/close eyes, grip/release)</li>
+        <li><strong>1</strong> Performs one</li>
+        <li><strong>2</strong> Performs neither</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>2. Best Gaze</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Normal</li>
+        <li><strong>1</strong> Partial gaze palsy</li>
+        <li><strong>2</strong> Forced deviation</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>3. Visual Fields</strong> — 0–3</summary>
+      <ul>
+        <li><strong>0</strong> No loss</li>
+        <li><strong>1</strong> Partial hemianopia</li>
+        <li><strong>2</strong> Complete hemianopia</li>
+        <li><strong>3</strong> Bilateral blindness (incl. cortical)</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>4. Facial Palsy</strong> — 0–3</summary>
+      <ul>
+        <li><strong>0</strong> Normal symmetry</li>
+        <li><strong>1</strong> Minor</li>
+        <li><strong>2</strong> Partial</li>
+        <li><strong>3</strong> Complete</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>5. Motor Arm (each arm)</strong> — 0–4</summary>
+      <ul>
+        <li><strong>0</strong> No drift (10 s)</li>
+        <li><strong>1</strong> Drift before 10 s</li>
+        <li><strong>2</strong> Some effort against gravity</li>
+        <li><strong>3</strong> No effort against gravity</li>
+        <li><strong>4</strong> No movement</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>6. Motor Leg (each leg)</strong> — 0–4</summary>
+      <ul>
+        <li><strong>0</strong> No drift (5 s)</li>
+        <li><strong>1</strong> Drift before 5 s</li>
+        <li><strong>2</strong> Some effort against gravity</li>
+        <li><strong>3</strong> No effort against gravity</li>
+        <li><strong>4</strong> No movement</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>7. Limb Ataxia</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Absent</li>
+        <li><strong>1</strong> One limb</li>
+        <li><strong>2</strong> Two limbs</li>
+      </ul>
+      <p class="side-note">Only score if due to ataxia (not weakness). Use finger‑nose, heel‑shin.</p>
+    </details>
+    <details>
+      <summary><strong>8. Sensory</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Normal</li>
+        <li><strong>1</strong> Mild‑moderate loss</li>
+        <li><strong>2</strong> Severe loss/total</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>9. Best Language (Aphasia)</strong> — 0–3</summary>
+      <ul>
+        <li><strong>0</strong> No aphasia</li>
+        <li><strong>1</strong> Mild‑moderate</li>
+        <li><strong>2</strong> Severe</li>
+        <li><strong>3</strong> Mute/global</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>10. Dysarthria</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> Normal</li>
+        <li><strong>1</strong> Mild‑moderate</li>
+        <li><strong>2</strong> Severe/anartheric</li>
+      </ul>
+    </details>
+    <details>
+      <summary><strong>11. Extinction & Inattention (Neglect)</strong> — 0–2</summary>
+      <ul>
+        <li><strong>0</strong> None</li>
+        <li><strong>1</strong> Partial neglect</li>
+        <li><strong>2</strong> Profound neglect</li>
+      </ul>
+    </details>
+
+    <div class="callout success"><strong>Destination cue:</strong> NIHSS high (often ≥10) or VAN+ → consider direct thrombectomy center if regional time cost is &lt; 30–60 min vs nearest hospital.
+    </div>
+
+    <h2>Brain Physiology Snapshot</h2>
+    <p>The brain is 2% of body weight but consumes 20% of oxygen and 25% of glucose. Cerebral blood flow is tightly autoregulated between MAP 60–160 mmHg. When flow drops below ~20 ml/100g/min, ischemic injury begins — hence the urgency in stroke care.</p>
+
+  </section>
+</body>
+</html>
