@@ -1,0 +1,21 @@
+/* NIHSS module styles */
+.nihss-sticky{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--hair) }
+.nihss-sticky-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 20px }
+.nihss-sticky-left{ font-weight:800; color:var(--ink) }
+.nihss-sticky-left .muted{ margin-left:8px }
+.nihss-sticky-right{ display:flex; align-items:center; gap:10px }
+.nihss-progress{ color:var(--muted) }
+.nihss-total{ padding:6px 10px; border-radius:999px; background:var(--accent-grad); color:#fff; font-weight:900 }
+.nihss-grid{ display:grid; gap:18px; margin-top:14px; grid-template-columns:1fr }
+@media (min-width:980px){ .nihss-grid{ grid-template-columns:1fr 1fr } }
+.nihss-q{ background:#fff; border:1px solid var(--hair); border-radius:14px; padding:14px 16px; box-shadow:0 6px 24px rgba(2,6,23,.05) }
+.nihss-q legend{ font-weight:800; color:var(--ink); padding:0 0 8px 0; margin:0 }
+.nihss-q legend span{ display:inline-block; min-width:2.6ch; color:#fff; font-weight:900; background:var(--accent-grad); padding:2px 8px; border-radius:8px; margin-right:8px }
+.nihss-q .opts{ display:grid; gap:8px }
+.nihss-q label{ display:flex; gap:8px; align-items:center }
+.nihss-hr{ border:none; border-top:1px solid var(--hair); margin:24px 0 }
+.nihss-actions{ display:flex; gap:10px; flex-wrap:wrap }
+.nihss-note{ background:#fff; border:1px solid var(--hair); border-radius:12px; padding:10px 12px; margin:10px 0 18px }
+.nihss-note > summary{ font-weight:700 }
+.nihss-disclaimer{ margin-top:18px; font-size:13px }
