@@ -2,114 +2,508 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>CriticalEdge — Trauma & Prehospital</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CriticalEdge — Paramedicine Talks</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <meta name="color-scheme" content="light" />
+  <style>
+    :root{
+      --bg: #ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+      --slate-900:#0f172a; --slate-800:#1f2937; --slate-700:#334155; --slate-50:#f8fafc;
+      --card:#ffffff; --card-glass:rgba(255,255,255,0.6); --accent:#0f172a;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:linear-gradient(to bottom,var(--slate-50),#fff)}
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+    .btn{display:inline-flex;align-items:center;gap:.5rem; height:44px; padding:0 16px; border-radius:12px; border:1px solid var(--ink); background:var(--ink); color:#fff; font-weight:600}
+    .btn.ghost{background:transparent;color:var(--ink);border-color:#cbd5e1}
+    .btn.secondary{background:#e2e8f0;color:#0f172a;border-color:#e2e8f0}
+    .btn.small{height:34px;font-size:.9rem}
+    .badge{display:inline-flex;align-items:center;gap:.35rem; padding:.2rem .5rem; border-radius:8px; font-size:.75rem; border:1px solid #e2e8f0; color:#334155}
+    .badge.secondary{background:#e2e8f0; border-color:#e2e8f0; color:#0f172a}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:0 2px 10px rgba(2,6,23,.04)}
+    .card .head{padding:20px 24px}
+    .card .body{padding:0 24px 24px}
+    .card .title{font-weight:700}
+    .grid{display:grid; gap:20px}
+    .g-2{grid-template-columns:1fr 1fr}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .stat{border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); color:#e2e8f0; border-radius:14px; padding:12px}
+    .muted{color:var(--muted)}
+    header.sticky{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid var(--line); z-index:10}
+    nav .btn{border:none; background:transparent; color:#334155}
+    nav .btn:hover{background:#f1f5f9}
+    .hero{background:linear-gradient(135deg,var(--slate-900),var(--slate-800),var(--slate-900)); color:#fff; border-bottom:1px solid rgba(255,255,255,.12)}
+    .logo-box{display:grid; place-items:center; width:36px; height:36px; border-radius:12px}
+    .footer{border-top:1px solid var(--line); background:rgba(255,255,255,.6)}
+    .sep{height:1px;background:#e2e8f0}
+    .pill{display:inline-flex;align-items:center;gap:.5rem; padding:.25rem .6rem; font-size:.75rem; border-radius:10px; color:#fff}
+    .pill.t{background:linear-gradient(90deg,#f43f5e,#fb923c)}
+    .pill.a{background:linear-gradient(90deg,#0ea5e9,#06b6d4)}
+    .pill.b{background:linear-gradient(90deg,#10b981,#84cc16)}
+    .pill.n{background:linear-gradient(90deg,#a21caf,#7c3aed)}
+    .tool-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--slate-900),var(--slate-700));color:#fff}
+    .row{display:flex;gap:8px;align-items:center}
+    .between{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.py-3{padding:.75rem 0}
+    .hstack{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .hide{display:none}
+    @media (max-width:900px){ .g-2{grid-template-columns:1fr} .g-3{grid-template-columns:1fr} nav{display:none} }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <header class="nav">
-    <div class="wrap nav-row">
-      <a class="brand" href="index.html">
-        <span class="brand-badge" aria-hidden="true"></span>
-        <span class="brand-text">CRITICALEDGE</span>
-      </a>
-      <nav class="main-nav">
-        <a href="#talks">Talks</a>
-        <a href="articles/index.html">All talks</a>
-        <a href="#pricing">Plans</a>
-        <a class="btn btn-accent" href="#subscribe">Subscribe</a>
+  <header class="sticky">
+    <div class="wrap between py-3">
+      <div class="row">
+        <div class="logo-box" aria-label="CriticalEdge">
+          <!-- Inline SVG logo (slate gradient + waveform) -->
+          <svg viewBox="0 0 100 100" width="36" height="36" role="img" aria-label="CriticalEdge logo">
+            <defs>
+              <linearGradient id="gSlate" x1="0" y1="1" x2="1" y2="0">
+                <stop stop-color="#0f172a" offset="0%"/>
+                <stop stop-color="#334155" offset="50%"/>
+                <stop stop-color="#1f2937" offset="100%"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="100" height="100" rx="20" fill="url(#gSlate)"/>
+            <polyline points="10,60 25,60 30,40 35,75 45,25 55,75 65,40 70,60 90,60"
+              stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:.95rem; line-height:1">CriticalEdge</div>
+          <div class="muted" style="font-size:.68rem; letter-spacing:.12em; text-transform:uppercase">Trauma & Prehospital</div>
+        </div>
+      </div>
+      <nav class="row">
+        <button class="btn ghost small">Home</button>
+        <button class="btn ghost small">Modules</button>
+        <button class="btn ghost small">Tools</button>
+        <button class="btn ghost small">Cases</button>
+        <button class="btn ghost small">Community</button>
+        <button class="btn ghost small">Resources</button>
       </nav>
+      <div class="row">
+        <input id="search" placeholder="Search cases, tools, threads…" class="btn ghost small" style="height:36px; background:#fff; border:1px solid #cbd5e1; color:#0f172a; width:220px"/>
+        <button class="btn small"><span>Join</span></button>
+      </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1 class="display">Ideas worth <span class="accent-grad">saving lives</span> for.</h1>
-        <p class="lead">Concise, credible, field‑tested micro‑talks for paramedics, critical care, and postgraduate learners. Knowledge saves <strong>lives</strong>.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-accent" href="#talks">Watch talks</a>
-          <a class="btn btn-ghost" href="#pricing">See plans</a>
+    <div class="wrap" style="padding:48px 16px">
+      <div class="grid g-2" style="align-items:center; gap:24px">
+        <div>
+          <h1 style="font-size:2.2rem; line-height:1.2; margin:0">Smarter decisions. Stronger teams. Better outcomes.</h1>
+          <p class="mt-2" style="max-width:44ch; color:#cbd5e1">
+            An interactive community for prehospital & trauma clinicians — where evidence becomes action through simulations, tools, and real-world cases.
+          </p>
+          <div class="hstack mt-3">
+            <button class="btn secondary"><span>Try a Simulation</span></button>
+            <button class="btn ghost" style="color:#fff; border-color:rgba(255,255,255,.3)">Explore Community</button>
+          </div>
+
+          <div class="grid g-3 mt-6">
+            <div class="stat">
+              <div class="row"><span class="muted" style="color:#e2e8f0">Members</span></div>
+              <div style="font-weight:700; font-size:1.1rem">4,382</div>
+            </div>
+            <div class="stat">
+              <div class="row"><span>Modules</span></div>
+              <div style="font-weight:700; font-size:1.1rem">28</div>
+            </div>
+            <div class="stat">
+              <div class="row"><span>Simulations</span></div>
+              <div style="font-weight:700; font-size:1.1rem">47</div>
+            </div>
+            <div class="stat">
+              <div class="row"><span>Active Now</span></div>
+              <div style="font-weight:700; font-size:1.1rem">163</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <a class="hero-video" href="articles/case-of-the-month.html">
-        <div class="thumb hero-thumb"><div class="play">▶</div></div>
-        <div class="hero-meta">
-          <div class="eyebrow">Case of the Month</div>
-          <h3>Beyond Protocol: Human Judgement in Trauma</h3>
-          <p>Excellence is not just algorithms, but contextual intelligence.</p>
+
+        <div>
+          <div class="card" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12)">
+            <div class="head">
+              <div class="title" style="color:#fff">Quick Demo</div>
+              <div class="muted" style="color:#cbd5e1">See how cases, tools, and community come together.</div>
+            </div>
+            <div class="body">
+              <div style="aspect-ratio:16/9; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:linear-gradient(135deg,#0b1220,#1f2937)"></div>
+              <div class="between mt-2" style="color:#cbd5e1; font-size:.8rem">
+                <div class="hstack">
+                  <span class="badge secondary">Trauma</span>
+                  <span class="badge" style="border-color:rgba(255,255,255,.3); color:#fff">Interactive</span>
+                </div>
+                <div>3:42</div>
+              </div>
+            </div>
+          </div>
         </div>
-      </a>
+
+      </div><!-- /grid -->
     </div>
   </section>
 
-  <!-- LATEST TALKS -->
-  <section id="talks" class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Latest talks</h2>
-        <a class="link-more" href="articles/index.html">See all</a>
+  <!-- CONTENT -->
+  <main class="wrap" style="padding:40px 16px">
+    <div class="between">
+      <h2 style="margin:0">Learn & Practice</h2>
+      <div class="row muted"><small>Compact view</small><input type="checkbox" id="compactToggle"></div>
+    </div>
+
+    <div class="grid g-3 mt-3">
+      <!-- Left: Modules + Guideline + Case -->
+      <div style="grid-column:1 / span 2; display:grid; gap:20px">
+
+        <!-- Modules -->
+        <div class="card">
+          <div class="head between">
+            <div>
+              <div class="title">Modules</div>
+              <div class="muted">Evidence-based micro-lessons with video pearls and quick checks.</div>
+            </div>
+            <div class="hstack" role="tablist" aria-label="Module tabs">
+              <button class="btn ghost small tab-trigger" data-tab="trauma">Trauma</button>
+              <button class="btn ghost small tab-trigger" data-tab="airway">Airway</button>
+              <button class="btn ghost small tab-trigger" data-tab="bleeding">Bleeding</button>
+              <button class="btn ghost small tab-trigger" data-tab="neuro">Neuro / Stroke</button>
+            </div>
+          </div>
+          <div class="body">
+            <!-- Tab Panels -->
+            <div class="tab-panel" id="tab-trauma">
+              <div class="grid g-2" id="cards-trauma"></div>
+            </div>
+            <div class="tab-panel hide" id="tab-airway">
+              <div class="grid g-2" id="cards-airway"></div>
+            </div>
+            <div class="tab-panel hide" id="tab-bleeding">
+              <div class="grid g-2" id="cards-bleeding"></div>
+            </div>
+            <div class="tab-panel hide" id="tab-neuro">
+              <div class="grid g-2" id="cards-neuro"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guideline Explorer -->
+        <div class="card">
+          <div class="head">
+            <div class="title">Guideline Explorer: Traumatic Cardiac Arrest</div>
+            <div class="muted">Collapse to cause control: open the steps you need, hide the ones you don’t.</div>
+          </div>
+          <div class="body" id="guidelines">
+            <!-- collapsibles injected -->
+          </div>
+        </div>
+
+        <!-- Case Simulation -->
+        <div class="card">
+          <div class="head between">
+            <div>
+              <div class="title">Case of the Week: Penetrating Chest</div>
+              <div class="muted">28M, RR 30, SpO₂ 91% on air, HR 132, BP 86/58. Diminished R breath sounds.</div>
+            </div>
+            <span class="badge secondary">🔥 Trending</span>
+          </div>
+          <div class="body" id="case">
+            <!-- case steps injected -->
+          </div>
+        </div>
+
       </div>
 
-      <div class="grid talks">
-        <a class="card" href="articles/stroke-recognition.html">
-          <div class="thumb"><span class="badge">Free</span></div>
-          <h3>Stroke Recognition in the Field</h3>
-          <p class="muted">FAST, glucose, last‑known‑well, pre‑alert.</p>
-        </a>
+      <!-- Right: Community + Tools + Upcoming -->
+      <div class="grid" style="grid-auto-rows:min-content; gap:20px">
+        <div class="card">
+          <div class="head">
+            <div class="title">Community</div>
+            <div class="muted">Active discussions from clinicians worldwide.</div>
+          </div>
+          <div class="body" id="threads">
+            <!-- threads injected -->
+          </div>
+        </div>
 
-        <a class="card" href="articles/airway-obesity.html">
-          <div class="thumb"><span class="badge">Free</span></div>
-          <h3>Airway in the Obese Patient</h3>
-          <p class="muted">Ramped position, dosing scalars, oxygenation strategies.</p>
-        </a>
+        <div class="card">
+          <div class="head"><div class="title">Tools</div><div class="muted">Interactive calculators & checklists.</div></div>
+          <div class="body grid" id="tools"></div>
+        </div>
 
-        <a class="card" href="articles/pharm-ems-selection.html">
-          <div class="thumb"><span class="badge badge-pro">Pro</span></div>
-          <h3>Pharmacology in EMS — Getting It Right</h3>
-          <p class="muted">Selection, stability, impact; drug‑pack checklist.</p>
-        </a>
+        <div class="card">
+          <div class="head"><div class="title">Live / Upcoming</div><div class="muted">Join journal club & skills sessions.</div></div>
+          <div class="body grid">
+            <div class="card" style="border-color:#e2e8f0">
+              <div class="body">
+                <div class="muted" style="font-size:.8rem">Thu • 19:00</div>
+                <div style="font-weight:700">Journal Club: Pelvic Hemorrhage – Pack vs. Angio</div>
+                <div class="muted mt-1" style="font-size:.85rem">with Dr M. Costa</div>
+              </div>
+            </div>
+            <div class="card" style="border-color:#e2e8f0">
+              <div class="body">
+                <div class="muted" style="font-size:.8rem">Mon • 18:30</div>
+                <div style="font-weight:700">Skills Lab: Finger Thoracostomy – Step by Step</div>
+                <div class="muted mt-1" style="font-size:.85rem">Hands-on demo + Q&A</div>
+              </div>
+            </div>
+            <button class="btn secondary">See calendar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="section section-gray">
-    <div class="wrap">
-      <div class="section-head"><h2>Plans</h2></div>
-      <div class="grid pricing">
-        <div class="price-card">
-          <div class="pc-head"><div class="pc-name">Free</div><div class="pc-price">$0</div></div>
-          <ul><li>Selected talks</li><li>Weekly micro‑lesson</li></ul>
-          <a class="btn btn-light" href="#subscribe">Start free</a>
-        </div>
-        <div class="price-card highlight">
-          <div class="pc-head"><div class="pc-name">Pro</div><div class="pc-price">$15<span class="per">/mo</span></div></div>
-          <ul><li>All Pro talks</li><li>Mini‑courses included</li><li>Downloads & checklists</li><li>Monthly live debrief</li></ul>
-          <a class="btn btn-accent" href="#subscribe">Upgrade to Pro</a>
-        </div>
-        <div class="price-card">
-          <div class="pc-head"><div class="pc-name">Team</div><div class="pc-price">Contact</div></div>
-          <ul><li>Seats for crews/classes</li><li>Progress reporting</li><li>Private live sessions</li></ul>
-          <a class="btn btn-light" href="#subscribe">Contact sales</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="wrap foot-row">
-      <div class="foot-brand"><span class="foot-badge" aria-hidden="true"></span><span>CRITICALEDGE</span></div>
-      <nav class="foot-nav"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></nav>
+    <div class="wrap" style="padding:24px 16px">
+      <div class="grid g-3">
+        <div>
+          <div class="row">
+            <div class="logo-box">
+              <!-- Repeat logo (smaller) -->
+              <svg viewBox="0 0 100 100" width="28" height="28" role="img" aria-label="CriticalEdge">
+                <defs>
+                  <linearGradient id="gSlateFooter" x1="0" y1="1" x2="1" y2="0">
+                    <stop stop-color="#0f172a" offset="0%"/>
+                    <stop stop-color="#334155" offset="50%"/>
+                    <stop stop-color="#1f2937" offset="100%"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="100" height="100" rx="20" fill="url(#gSlateFooter)"/>
+                <polyline points="10,60 25,60 30,40 35,75 45,25 55,75 65,40 70,60 90,60"
+                  stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div style="font-weight:700">CriticalEdge</div>
+          </div>
+          <p class="muted mt-2" style="max-width:40ch">Interactive trauma education for the sharp end of care.</p>
+        </div>
+        <div>
+          <div style="font-weight:700">Learn</div>
+          <ul class="muted" style="list-style:none; padding:0; margin:.5rem 0 0">
+            <li>Modules</li><li>Cases</li><li>Tools</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700">Community</div>
+          <ul class="muted" style="list-style:none; padding:0; margin:.5rem 0 0">
+            <li>Threads</li><li>Leaderboard</li><li>Mentors</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sep mt-3"></div>
+      <div class="muted" style="text-align:center; font-size:.8rem; padding:12px 0">
+        © <span id="year"></span> CriticalEdge. All rights reserved.
+      </div>
     </div>
-    <div class="wrap foot-copy">© <span id="yr"></span> CriticalEdge. Ideas worth saving lives for.</div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    // ----- Data you can later move to /assets/data/modules.json -----
+    const MODULES = {
+      trauma: [
+        { title:"Traumatic Cardiac Arrest", desc:"Rapid reversible-cause workflow + video pearls.", minutes:18, pill:"t" },
+        { title:"Pelvic Bleeding Control", desc:"Binder, packing, angio – when to do what.", minutes:22, pill:"t" },
+        { title:"Penetrating vs. Blunt", desc:"Transport decisions & MTP triggers.", minutes:16, pill:"t" },
+      ],
+      airway: [
+        { title:"PreOx | ApOx | ReOx", desc:"Avoid deadly desaturation during RSI.", minutes:14, pill:"a" },
+        { title:"Crash Airway", desc:"Best-first device, bougie-first flow.", minutes:12, pill:"a" },
+        { title:"Thoracostomy Timing", desc:"RSI in chest trauma – decompress first?", minutes:10, pill:"a" },
+      ],
+      bleeding: [
+        { title:"Damage Control Resus", desc:"Permissive hypotension & balanced products.", minutes:20, pill:"b" },
+        { title:"TXA in the Field", desc:"Who gets it? Dose? Timing?", minutes:8, pill:"b" },
+        { title:"Tourniquets & Junctionals", desc:"Placement, pitfalls, and prolonged times.", minutes:15, pill:"b" },
+      ],
+      neuro: [
+        { title:"Stroke Triage", desc:"FAST-ED vs NIHSS – prehospital shortcut.", minutes:11, pill:"n" },
+        { title:"Head Injury", desc:"Spinal stabilization update & red flags.", minutes:13, pill:"n" },
+        { title:"Agitation & Analgesia", desc:"Sedation that preserves neuro exam.", minutes:9, pill:"n" },
+      ]
+    };
+
+    const THREADS = [
+      { title:"Would you intubate this chest-stab on scene?", tag:"Trauma", replies:48, by:"A. Jensen" },
+      { title:"ApOx with CPAP: what’s your setup?", tag:"Airway", replies:29, by:"M. Ortiz" },
+      { title:"Pelvic binder: sheet vs. commercial", tag:"Bleeding", replies:33, by:"R. Clarke" },
+      { title:"Stroke scale drift en route – thrombolysis canceled", tag:"Neuro", replies:17, by:"S. Ahmed" },
+    ];
+
+    const TOOLS = [
+      { name:"Airway PreOx Planner", hint:"TVB 3min • ApOx • ReOx" },
+      { name:"FAST Decision Aid", hint:"US → CT thresholds" },
+      { name:"Stroke Prehospital Triage", hint:"FAST-ED / RACE shortcuts" },
+    ];
+
+    const GL_STEPS = [
+      { t:"1) Treat reversible causes first (don’t pump an empty heart)", b:"Control external hemorrhage (pressure, hemostatics, tourniquet), decompress tension pneumothorax (finger/open thoracostomy), relieve tamponade (resuscitative thoracotomy where indicated), and oxygenate/ventilate." },
+      { t:"2) Oxygenation & ventilation", b:"High FiO₂, assist ventilation. Delay or prepare RSI until after decompression if tension physiology is suspected." },
+      { t:"3) Circulation & access", b:"Large-bore IV/IO. Begin blood early if hemorrhagic shock suspected. Minimize crystalloids. Prepare MTP activation." },
+      { t:"4) Rhythm & ultrasound", b:"PEA/asystole are common; use ultrasound to identify causes while minimizing interruptions to compressions if ongoing." },
+      { t:"5) Transport & team activation", b:"Rapid transport to trauma center capable of thoracotomy / angio / damage control surgery. Pre-alert with concise ATMIST." , open:true},
+    ];
+
+    // ----- Helpers -----
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+    const el = (tag, cls) => { const n=document.createElement(tag); if(cls) n.className=cls; return n; };
+    const pillClass = k => `pill ${k}`;
+
+    // ----- Populate modules -----
+    function renderModuleCards(id, items){
+      const wrap = $(`#cards-${id}`);
+      wrap.innerHTML = "";
+      items.forEach(it=>{
+        const card = el('div','card');
+        const inner = el('div','body');
+        const pill = el('span', pillClass(it.pill)); pill.textContent = id[0].toUpperCase()+id.slice(1);
+        const title = el('div'); title.style.fontWeight='700'; title.textContent = it.title;
+        const desc = el('div','muted mt-1'); desc.textContent = it.desc;
+        const row = el('div','between mt-2');
+        row.innerHTML = `<span class="muted" style="font-size:.85rem">${it.minutes} min</span>
+                         <button class="btn ghost small">Start →</button>`;
+        inner.prepend(pill,title,desc,row);
+        card.appendChild(inner);
+        wrap.appendChild(card);
+      });
+    }
+
+    renderModuleCards('trauma', MODULES.trauma);
+    renderModuleCards('airway', MODULES.airway);
+    renderModuleCards('bleeding', MODULES.bleeding);
+    renderModuleCards('neuro', MODULES.neuro);
+
+    // ----- Tabs -----
+    const tabButtons = $$('.tab-trigger');
+    const tabPanels = $$('.tab-panel');
+    function activateTab(id){
+      tabButtons.forEach(b=> b.classList.toggle('secondary', b.dataset.tab===id));
+      tabPanels.forEach(p=> p.classList.toggle('hide', p.id !== `tab-${id}`));
+    }
+    activateTab('trauma');
+    tabButtons.forEach(b=> b.addEventListener('click', ()=> activateTab(b.dataset.tab)));
+
+    // ----- Compact toggle -----
+    $('#compactToggle').addEventListener('change', (e)=>{
+      const on = e.target.checked;
+      $$('.grid.g-2').forEach(g => g.style.gridTemplateColumns = on ? 'repeat(3,1fr)' : '1fr 1fr');
+    });
+
+    // ----- Guidelines (collapsibles) -----
+    const gWrap = $('#guidelines');
+    GL_STEPS.forEach((s,i)=>{
+      const blk = el('div','card'); blk.style.borderColor = '#e2e8f0';
+      const head = el('div','body'); head.style.paddingBottom='12px';
+      const toggle = el('button','btn ghost small'); toggle.textContent = s.t;
+      toggle.style.width='100%'; toggle.style.justifyContent='space-between';
+      const body = el('div','muted mt-2'); body.textContent = s.b;
+      body.style.display = s.open ? 'block' : 'none';
+      toggle.addEventListener('click', ()=> body.style.display = (body.style.display==='none'?'block':'none'));
+      head.append(toggle, body);
+      blk.append(head);
+      gWrap.append(blk);
+    });
+
+    // ----- Case simulation -----
+    const caseWrap = $('#case');
+    let step = 0, choice = null;
+    function renderCase(){
+      caseWrap.innerHTML = '';
+      if(step===0){
+        const q = el('div'); q.innerHTML = `What’s your <b>first</b> move?`;
+        const grid = el('div','grid g-3 mt-2'); grid.style.gap='12px';
+        [['A','RSI immediately'],['B','Occlusive dressing + transport'],['C','Finger thoracostomy right side']].forEach(([k,l])=>{
+          const b = el('button','btn ghost'); b.style.justifyContent='space-between';
+          b.innerHTML = `<span style="font-family:mono">${k}</span> ${l} <span>→</span>`;
+          b.onclick = ()=>{ choice=k; step=1; renderCase(); };
+          grid.appendChild(b);
+        });
+        caseWrap.append(q,grid);
+      } else if(step===1){
+        const info = el('div','card'); const body = el('div','body');
+        const msgGood = `Decompressing first treats the likely tension physiology. SpO₂ improves to 96%, HR 118, BP 98/64. Prepare for RSI once ventilation is improved.`;
+        const msgWarn = `Consider decompressing <b>before</b> RSI/transport in suspected tension. Hypoxia/hypotension may worsen with positive pressure.`;
+        body.innerHTML = `<div class="muted">You chose <b>${
+          choice==='A'?'RSI immediately': choice==='B'?'Occlusive dressing + transport':'Finger thoracostomy'
+        }</b>.</div>
+        <div class="mt-2" style="border:1px solid #86efac; background:#f0fdf4; color:#14532d; padding:.75rem; border-radius:10px">
+          ${choice==='C'? msgGood : msgWarn}
+        </div>
+        <div class="hstack mt-2">
+          <button class="btn small">Next Step</button>
+          <button class="btn ghost small" id="reset">Reset</button>
+        </div>`;
+        body.querySelector('.btn.small').onclick = ()=>{ step=2; renderCase(); };
+        body.querySelector('#reset').onclick = ()=>{ step=0; choice=null; renderCase(); };
+        info.appendChild(body); caseWrap.appendChild(info);
+      } else if(step===2){
+        const body = el('div');
+        body.innerHTML = `<div class="muted">En route, patient drops SpO₂ again. You’ve pre-oxygenated. Choose induction:</div>`;
+        const grid = el('div','grid g-3 mt-2');
+        ['Ketamine + Rocuronium','Etomidate + Rocuronium','Propofol + Succinylcholine'].forEach(l=>{
+          const b = el('button','btn ghost'); b.style.justifyContent='space-between';
+          b.innerHTML = `${l} <span>→</span>`;
+          b.onclick = ()=>{ step=3; renderCase(); };
+          grid.appendChild(b);
+        });
+        const tip = el('div','mt-2'); tip.style.border='1px solid #bfdbfe'; tip.style.background='#eff6ff'; tip.style.color='#1e3a8a'; tip.style.padding='.75rem'; tip.style.borderRadius='10px';
+        tip.innerHTML = `Tip: In trauma with hypotension, choose agents that preserve perfusion and continue <b>apneic oxygenation</b>.`;
+        caseWrap.append(body, grid, tip);
+      } else if(step===3){
+        const body = el('div');
+        body.innerHTML = `
+          <div class="muted" style="font-weight:700">Outcome</div>
+          <div class="card mt-1" style="border-color:#e2e8f0"><div class="body">
+            Tube placed on first pass. Post-RSI SpO₂ 98%, BP 104/66 with fluids and blood underway.
+            You call ahead to MTC for immediate thoracostomy tube and trauma team activation.
+          </div></div>
+          <div class="hstack mt-2">
+            <span class="badge">+25 pts</span><span class="badge secondary">Resus Master</span>
+            <span class="badge">Community poll: 64% chose decompression first</span>
+          </div>
+          <div class="mt-2"><button class="btn ghost small" id="replay">⟲ Replay</button></div>`;
+        caseWrap.appendChild(body);
+        $('#replay').onclick = ()=>{ step=0; choice=null; renderCase(); };
+      }
+    }
+    renderCase();
+
+    // ----- Threads -----
+    const tWrap = $('#threads');
+    THREADS.forEach(t=>{
+      const card = el('div','card'); card.style.borderColor='#e2e8f0';
+      const b = el('div','body');
+      b.innerHTML = `<div class="between">
+          <div class="hstack muted" style="font-size:.8rem"><span class="badge">${t.tag}</span><span>•</span><span>by ${t.by}</span></div>
+          <div class="muted" style="font-size:.8rem">${t.replies} replies</div>
+        </div>
+        <div class="mt-1" style="font-weight:600">${t.title}</div>
+        <div class="hstack mt-2"><button class="btn ghost small">Open</button><button class="btn secondary small">Reply</button></div>`;
+      card.appendChild(b); tWrap.appendChild(card);
+    });
+
+    // ----- Tools -----
+    const toolsWrap = $('#tools');
+    TOOLS.forEach(tool=>{
+      const row = el('div','between card'); row.style.borderColor='#e2e8f0';
+      const body = el('div','body'); body.style.display='flex'; body.style.justifyContent='space-between'; body.style.alignItems='center'; body.style.gap='12px';
+      const left = el('div','row');
+      const ic = el('div','tool-icon'); ic.textContent='🧩';
+      const txt = el('div'); txt.innerHTML = `<div style="font-weight:600">${tool.name}</div><div class="muted" style="font-size:.85rem">${tool.hint}</div>`;
+      left.append(ic, txt);
+      const btn = el('button','btn ghost small'); btn.textContent='Open →';
+      body.append(left, btn); row.append(body); toolsWrap.append(row);
+    });
+
+    // Year
+    $('#year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
