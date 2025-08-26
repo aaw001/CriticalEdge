@@ -1,0 +1,18 @@
+[
+  {
+    "slug":"stroke-recognition",
+    "title":"Stroke Recognition in the Field",
+    "teaser":"FAST, glucose, last-known-well, pre-alert.",
+    "duration":"12:40",
+    "tags":["stroke","field"],
+    "access":"free"
+  },
+  {
+    "slug":"airway-obese",
+    "title":"Airway in the Obese Patient",
+    "teaser":"Ramped position, dosing scalars, oxygenation strategies.",
+    "duration":"16:05",
+    "tags":["airway","obesity"],
+    "access":"free"
+  }
+]
