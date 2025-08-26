@@ -1,0 +1,22 @@
+{
+  "trauma": [
+    { "title": "Traumatic Cardiac Arrest", "desc": "Rapid reversible-cause workflow + video pearls.", "minutes": 18, "pill": "t" },
+    { "title": "Pelvic Bleeding Control", "desc": "Binder, packing, angio – when to do what.", "minutes": 22, "pill": "t" },
+    { "title": "Penetrating vs. Blunt", "desc": "Transport decisions & MTP triggers.", "minutes": 16, "pill": "t" }
+  ],
+  "airway": [
+    { "title": "PreOx | ApOx | ReOx", "desc": "Avoid deadly desaturation during RSI.", "minutes": 14, "pill": "a" },
+    { "title": "Crash Airway", "desc": "Best-first device, bougie-first flow.", "minutes": 12, "pill": "a" },
+    { "title": "Thoracostomy Timing", "desc": "RSI in chest trauma – decompress first?", "minutes": 10, "pill": "a" }
+  ],
+  "bleeding": [
+    { "title": "Damage Control Resus", "desc": "Permissive hypotension & balanced products.", "minutes": 20, "pill": "b" },
+    { "title": "TXA in the Field", "desc": "Who gets it? Dose? Timing?", "minutes": 8, "pill": "b" },
+    { "title": "Tourniquets & Junctionals", "desc": "Placement, pitfalls, and prolonged times.", "minutes": 15, "pill": "b" }
+  ],
+  "neuro": [
+    { "title": "Stroke Triage", "desc": "FAST-ED vs NIHSS – prehospital shortcut.", "minutes": 11, "pill": "n" },
+    { "title": "Head Injury", "desc": "Spinal stabilization update & red flags.", "minutes": 13, "pill": "n" },
+    { "title": "Agitation & Analgesia", "desc": "Sedation that preserves neuro exam.", "minutes": 9, "pill": "n" }
+  ]
+}
