@@ -63,6 +63,28 @@
     @media (max-width:900px){ .g-2{grid-template-columns:1fr} .g-3{grid-template-columns:1fr} nav{display:none} }
   </style>
 </head>
+  <script>
+async function initNav() {
+  try {
+    const res  = await fetch('assets/data/nav.json', { cache: 'no-store' });
+    const items = await res.json();
+    const here  = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const navEl = document.querySelector('nav');
+    if (!navEl) return;
+
+    navEl.innerHTML = items.map(i => {
+      const active = i.href.toLowerCase() === here ? 'secondary' : 'ghost';
+      return `<a class="btn ${active} small" href="${i.href}">${i.label}</a>`;
+    }).join('');
+  } catch (e) {
+    console.warn('Nav failed to load:', e);
+  }
+}
+initNav();
+</script>
+</body>
+</html>
+
 <body>
 
   <!-- NAV -->
