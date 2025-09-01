@@ -1,6 +1,6 @@
 [
-  { "label": "Home",  "href": "index.html" },
-  { "label": "Talks", "href": "talks.html" },
-  { "label": "Plans", "href": "plans.html" },
-  { "label": "About", "href": "about.html" }
+  { "label": "Home",  "href": "/CriticalEdge/index.html" },
+  { "label": "Talks", "href": "/CriticalEdge/plans.html" },
+  { "label": "Plans", "href": "/CriticalEdge/plans.html" },
+  { "label": "About", "href": "/CriticalEdge/about.html" }
 ]
