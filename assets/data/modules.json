@@ -1,4 +1,11 @@
 {
+  {
+    "slug": "pocus-hypotension",
+    "title": "Prehospital POCUS for the Hypotensive Patient",
+    "minutes": "30–45 min",
+    "level": "Intermediate",
+    "audience": "Paramedics, HEMS, prehospital clinicians"
+  }
   "trauma": [
     { "title": "Traumatic Cardiac Arrest", "desc": "Rapid reversible-cause workflow + video pearls.", "minutes": 18, "pill": "t" },
     { "title": "Pelvic Bleeding Control", "desc": "Binder, packing, angio – when to do what.", "minutes": 22, "pill": "t" },
